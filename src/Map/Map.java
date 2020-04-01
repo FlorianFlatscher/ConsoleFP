@@ -5,7 +5,7 @@ import java.io.*;
 public class Map {
 
 
-    private final static String charRange = "$@B%8&WM#*oahkbdpqwmZO0QLCJUYXzcvunxrjft/\\|()1{}[]?-_+~<>i!lI;:,\"^`'.";
+    private final static String charRange = "$@B%8&WM#*oahkbdpqwmZO0QLCJUYXzcvunxrjft/\\|()1{}[]?-_+~<>i!lI;:,\"^`'. ";
 
 
     public static char[][] parse(String fileName) throws IOException {
