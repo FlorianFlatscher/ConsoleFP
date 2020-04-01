@@ -23,7 +23,8 @@ public class Application extends javafx.application.Application {
     @Override
     public void start(Stage stage) throws Exception {
         VBox root = new VBox();
-        stage.setScene(new Scene(root, 600, 400));
+        stage.setScene(new Scene(root));
+        stage.setResizable(false);
         root.getStylesheets().add(getClass().getResource("./style/style.css").toExternalForm());
 
         //Content
@@ -37,17 +38,18 @@ public class Application extends javafx.application.Application {
         openFile.setOnAction(actionEvent -> {
             FileChooser chooser = new FileChooser();
             File file1 = chooser.showOpenDialog(stage);
-            startGame(file1);
+            //startGame(file1);
         });
         Menu fileMenu = new Menu("File", null, openFile);
         MenuBar bar = new MenuBar(fileMenu);
 
 
         root.getChildren().addAll(bar, game);
-        startGame(new File("test.txt"));
+        startGame(new File("test.txt"), stage);
+
     }
 
-    public void startGame (File f) {
+    public void startGame (File f, Stage stage) {
 
         try {
             final Agent agent = new Agent(2, 2, 0, Map.parse(f.getAbsolutePath()));
@@ -57,6 +59,7 @@ public class Application extends javafx.application.Application {
                 public void handle(long l) {
                     game.setText(agent.getRender(Math.PI * 0.4, 40, 80));
                     agent.turn(0.01);
+                    stage.sizeToScene();
                 }
             };
             timer.start();

@@ -1,4 +1,4 @@
-package Map;
+package map;
 
 import java.io.*;
 
@@ -28,6 +28,16 @@ public class Map {
         else if(n < 0)
             n = 0;
         return charRange.charAt(n);
+    }
+    public static char mapBlock(int n, int max){
+        int charChoice = (int) (n / (double) max) * 4;
+        switch(charChoice){
+            case 0: return (char) 219;
+            case 1: return (char) 178;
+            case 2: return (char) 177;
+            case 3: return (char) 176;
+            default: return ' ';
+        }
     }
 
 
