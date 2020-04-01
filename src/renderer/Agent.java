@@ -45,7 +45,7 @@ public class Agent {
                 stripes[i][y] = (Map.mapBlock(direction, maxDistance));
             }
             for (int y = floorStart; y < asciiViewHeight; y++) {
-                stripes[i][y] =  (' ');
+                stripes[i][y] =  (Map.mapBlock(y, asciiViewHeight - floorStart));
             }
         }
         StringBuilder asciiImage = new StringBuilder(asciiViewHeight * asciiViewWidth + asciiViewHeight);
