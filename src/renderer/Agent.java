@@ -42,7 +42,7 @@ public class Agent {
                 stripes[i][y] = (' ');
             }
             for (int y = roofStart+1; y < floorStart; y++) {
-                stripes[i][y] = (Map.mapBlock(direction, maxDistance));
+                stripes[i][y] = (Map.mapBlock(distance, maxDistance));
             }
             for (int y = floorStart; y < asciiViewHeight; y++) {
                 stripes[i][y] =  (' ');
