@@ -1,6 +1,5 @@
 package renderer;
 
-import Map.Map;
 
 public class Agent {
     public static double accuracy = 0.1; //The lower the mor accurate
@@ -39,7 +38,7 @@ public class Agent {
             int floorStart = asciiViewHeight - roofStart;
 
             for (int y = 0; y <= roofStart; y++) {
-                stripes[i][y] = (Map.map(70));
+                stripes[i][y] = (Map.mapBlock());
             }
             for (int y = roofStart+1; y < floorStart; y++) {
                 stripes[i][y] = (Map.map((int) (distance / maxDistance * 10)));
