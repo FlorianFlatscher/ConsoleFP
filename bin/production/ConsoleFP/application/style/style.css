@@ -1,3 +1,5 @@
 #game {
     -fx-font-family: 'monospaced';
+    -fx-background-color: 'black';
+    -fx-text-inner-color: white;
 }
