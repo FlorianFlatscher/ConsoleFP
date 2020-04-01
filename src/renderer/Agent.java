@@ -1,12 +1,17 @@
 package renderer;
 
+import javafx.scene.input.KeyEvent;
 import map.Map;
+
+
 
 public class Agent {
     public static double accuracy = 0.1; //The lower the mor accurate
 
     private double x, y;
     private double direction;
+
+    boolean w,a,s,d = false;
 
     private char[][] map;
 
@@ -19,6 +24,12 @@ public class Agent {
     }
 
     public String getRender(double viewingAngle, int asciiViewHeight, int asciiViewWidth) {
+        if (a) {
+            direction += 0.01;
+        }
+        if (d) {
+            direction += 0.01;
+        }
         char[][] stripes = new char[asciiViewWidth][asciiViewHeight];
         for (int i = 0; i < stripes.length; i++) {
             double currentAngle = direction - viewingAngle*(i/(double)asciiViewWidth) + viewingAngle/2;
@@ -45,7 +56,7 @@ public class Agent {
                 stripes[i][y] = (Map.mapBlock(distance, maxDistance));
             }
             for (int y = floorStart; y < asciiViewHeight; y++) {
-                stripes[i][y] =  (Map.mapBlock(y, asciiViewHeight - floorStart));
+                stripes[i][y] = (Map.mapFloor(y - floorStart, asciiViewHeight / 2.));
             }
         }
         StringBuilder asciiImage = new StringBuilder(asciiViewHeight * asciiViewWidth + asciiViewHeight);
@@ -59,7 +70,21 @@ public class Agent {
         return asciiImage.toString();
     }
 
-    public void turn(double distance) {
-        direction += distance;
+    public void keyPressed (KeyEvent e) {
+        switch (e.getCode()) {
+            case W: w = true; break;
+            case A: a = true; break;
+            case S: s = true; break;
+            case D: d = true; break;
+        }
+    }
+
+    public void keyReleased (KeyEvent e) {
+        switch (e.getCode()) {
+            case W: w = false; break;
+            case A: a = false; break;
+            case S: s = false; break;
+            case D: d = false; break;
+        }
     }
 }

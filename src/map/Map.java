@@ -40,5 +40,15 @@ public class Map {
         }
     }
 
+    public static char mapFloor(double n, double max){
+        int charChoice = (int) ((n /  max) * 4);
+        switch(charChoice){
+            case 0: return  '_';
+            case 1: return  '.';
+            case 2: return  'x';
+            case 3: return  '#';
+            default: return ' ';
+        }
+    }
 
 }

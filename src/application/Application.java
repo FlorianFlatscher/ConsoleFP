@@ -1,7 +1,7 @@
 package application;
 
-import map.Map;
 import javafx.animation.AnimationTimer;
+import javafx.event.EventType;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.Menu;
@@ -10,8 +10,10 @@ import javafx.scene.control.MenuItem;
 import javafx.scene.layout.VBox;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+import map.Map;
 import renderer.Agent;
 
+import java.awt.event.KeyEvent;
 import java.io.File;
 import java.io.IOException;
 
@@ -54,12 +56,12 @@ public class Application extends javafx.application.Application {
 
         try {
             final Agent agent = new Agent(2, 2, 0, Map.parse(f.getAbsolutePath()));
-
+            stage.getScene().setOnKeyPressed(agent::keyPressed);
+            stage.getScene().setOnKeyReleased(agent::keyReleased);
             timer = new AnimationTimer() {
                 @Override
                 public void handle(long l) {
-                    game.setText(agent.getRender(Math.PI * 0.4, 40, 80));
-                    agent.turn(0.01);
+                    game.setText(agent.getRender(Math.PI * 0.5, 50, 100));
                     stage.sizeToScene();
                 }
             };
