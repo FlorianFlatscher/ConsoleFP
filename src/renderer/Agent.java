@@ -39,13 +39,13 @@ public class Agent {
             int floorStart = asciiViewHeight - roofStart;
 
             for (int y = 0; y <= roofStart; y++) {
-                stripes[i][y] = (Map.mapBlock());
+                stripes[i][y] = (' ');
             }
             for (int y = roofStart+1; y < floorStart; y++) {
-                stripes[i][y] = (Map.map((int) (distance / maxDistance * 10)));
+                stripes[i][y] = (Map.mapBlock(direction, maxDistance));
             }
             for (int y = floorStart; y < asciiViewHeight; y++) {
-                stripes[i][y] =  (Map.map(70));
+                stripes[i][y] =  (' ');
             }
         }
         StringBuilder asciiImage = new StringBuilder(asciiViewHeight * asciiViewWidth + asciiViewHeight);

@@ -29,7 +29,7 @@ public class Map {
             n = 0;
         return charRange.charAt(n);
     }
-    public static char mapBlock(int n, int max){
+    public static char mapBlock(double n, double max){
         int charChoice = (int) (n / (double) max) * 4;
         switch(charChoice){
             case 0: return (char) 219;
