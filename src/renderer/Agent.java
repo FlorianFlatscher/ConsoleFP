@@ -1,5 +1,6 @@
 package renderer;
 
+import map.Map;
 
 public class Agent {
     public static double accuracy = 0.1; //The lower the mor accurate

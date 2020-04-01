@@ -1,6 +1,6 @@
 package application;
 
-import Map.Map;
+import map.Map;
 import javafx.animation.AnimationTimer;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
