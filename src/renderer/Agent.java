@@ -19,7 +19,7 @@ public class Agent {
     }
 
     public String getRender(double viewingAngle, int asciiViewHeight, int asciiViewWidth) {
-        String[] stripes = new String[asciiViewWidth];
+        char[][] stripes = new char[asciiViewWidth][asciiViewHeight];
         for (int i = 0; i < stripes.length; i++) {
             double currentAngle = direction - viewingAngle*(i/(double)asciiViewWidth) + viewingAngle/2;
 
@@ -39,14 +39,23 @@ public class Agent {
 
             StringBuilder stringBuilder = new StringBuilder(asciiViewHeight);
             for (int y = 0; y <= roofStart; y++) {
-                stringBuilder.append(Map.map(100));
+                stripes[i][y] = (Map.map(100));
             }
             for (int y = roofStart+1; y < floorStart; y++) {
-                stringBuilder.append(Map.map(1));
+                stripes[i][y] = (Map.map(1));
             }
             for (int y = floorStart; y < asciiViewHeight; y++) {
-                stringBuilder.append(Map.map(1));
+                stripes[i][y] =  (Map.map(1));
             }
         }
+        StringBuilder asciiImage = new StringBuilder(asciiViewHeight * asciiViewWidth + asciiViewHeight);
+
+        for (int y = 0; y < stripes[0].length; y++) {
+            for (int x = 0; x < stripes.length; x++) {
+                asciiImage.append(stripes[x][y]);
+            }
+            asciiImage.append('\n');
+        }
+        return asciiImage.toString();
     }
 }
