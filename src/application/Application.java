@@ -18,12 +18,13 @@ public class Application extends javafx.application.Application {
         game.setStyle("-fx-font-family: 'monospaced';");
         setup(stage);
     }
-    private void setup(Stage stage){
+
+    private void setup(Stage stage) {
         VBox root = new VBox();
         root.getChildren().add(game);
-
     }
-    private void menu(VBox root, Stage stage){
+
+    private void menu(VBox root, Stage stage) {
         MenuBar bar = new MenuBar();
         Menu file = new Menu("File");
         MenuItem openFile = new MenuItem("Open...");
@@ -31,11 +32,9 @@ public class Application extends javafx.application.Application {
             FileChooser chooser = new FileChooser();
             File file1 = chooser.showOpenDialog(stage);
         });
-
-
-
     }
-    public static void main(String[] args){
+
+    public static void main(String[] args) {
         launch(args);
     }
 }
