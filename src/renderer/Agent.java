@@ -29,6 +29,7 @@ public class Agent {
             while (map[(int) Math.round(currentX)][(int) Math.round(currentY)] != '#') {
                 currentX += Math.cos(currentAngle) * accuracy;
                 currentY += Math.sin(currentAngle) * accuracy;
+
             }
 
             double distance = Math.sqrt(currentX * currentX + currentY * currentY);
@@ -37,15 +38,14 @@ public class Agent {
             int roofStart = (int) (asciiViewHeight*0.35 * (distance/maxDistance) + asciiViewHeight*0.05);
             int floorStart = asciiViewHeight - roofStart;
 
-            StringBuilder stringBuilder = new StringBuilder(asciiViewHeight);
             for (int y = 0; y <= roofStart; y++) {
-                stripes[i][y] = (Map.map(100));
+                stripes[i][y] = (Map.map(70));
             }
             for (int y = roofStart+1; y < floorStart; y++) {
-                stripes[i][y] = (Map.map(1));
+                stripes[i][y] = (Map.map(8));
             }
             for (int y = floorStart; y < asciiViewHeight; y++) {
-                stripes[i][y] =  (Map.map(1));
+                stripes[i][y] =  (Map.map(70));
             }
         }
         StringBuilder asciiImage = new StringBuilder(asciiViewHeight * asciiViewWidth + asciiViewHeight);
@@ -57,5 +57,9 @@ public class Agent {
             asciiImage.append('\n');
         }
         return asciiImage.toString();
+    }
+
+    public void turn(double distance) {
+        direction += distance;
     }
 }

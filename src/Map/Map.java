@@ -17,13 +17,14 @@ public class Map {
             String line = reader.readLine();
             for(int i=0;line!=null;i++){
                 map[i] = line.toCharArray();
+                line = reader.readLine();
             }
         }
         return map;
     }
     public static char map(int n){
-        if(n > 70 )
-            n =70;
+        if(n >= 70 )
+            n =69;
         else if(n < 0)
             n = 0;
         return charRange.charAt(n);
