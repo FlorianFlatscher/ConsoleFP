@@ -17,6 +17,7 @@ public class Application extends javafx.application.Application {
     public void start(Stage stage) throws Exception {
         VBox root = new VBox();
         stage.setScene(new Scene(root, 600, 400));
+        root.getStylesheets().add(getClass().getResource("./style/style.css").toExternalForm());
 
         //Menu
         MenuItem openFile = new MenuItem("Open...");
@@ -30,8 +31,7 @@ public class Application extends javafx.application.Application {
 
         //Content
         Label game = new Label("test\n....\n----\n||||");
-        game.setStyle("-fx-font-family: 'monospaced';");
-
+        game.setId("game");
         root.getChildren().addAll(game);
 
         stage.show();
