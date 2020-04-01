@@ -28,7 +28,13 @@ public class Agent {
             direction += 0.01;
         }
         if (d) {
-            direction += 0.01;
+            direction -= 0.01;
+        }
+        if(w){
+            this.x += 0.01;
+        }
+        if(s){
+            this.x -= 0.01;
         }
         char[][] stripes = new char[asciiViewWidth][asciiViewHeight];
         for (int i = 0; i < stripes.length; i++) {
