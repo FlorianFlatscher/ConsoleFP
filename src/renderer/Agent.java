@@ -28,7 +28,13 @@ public class Agent {
             direction += 0.03;
         }
         if (d) {
-            direction -= 0.03;
+            direction -= 0.01;
+        }
+        if(w){
+            this.x += 0.01;
+        }
+        if(s){
+            this.x -= 0.01;
         }
         if (w) {
             x+=Math.cos(direction) * -0.01;
