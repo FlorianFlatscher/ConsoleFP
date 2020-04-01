@@ -42,7 +42,7 @@ public class Agent {
                 stripes[i][y] = (Map.map(70));
             }
             for (int y = roofStart+1; y < floorStart; y++) {
-                stripes[i][y] = (Map.map(8));
+                stripes[i][y] = (Map.map((int) (distance / maxDistance * 10)));
             }
             for (int y = floorStart; y < asciiViewHeight; y++) {
                 stripes[i][y] =  (Map.map(70));
