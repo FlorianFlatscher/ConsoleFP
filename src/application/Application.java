@@ -22,6 +22,7 @@ public class Application extends javafx.application.Application {
 
     @Override
     public void start(Stage stage) throws Exception {
+        System.out.println((char)217);
         VBox root = new VBox();
         stage.setScene(new Scene(root));
         stage.setResizable(false);
