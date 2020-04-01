@@ -32,10 +32,10 @@ public class Map {
     public static char mapBlock(double n, double max){
         int charChoice = (int) ((n /  max) * 4);
         switch(charChoice){
-            case 0: return (char) 219;
-            case 1: return (char) 178;
-            case 2: return (char) 177;
-            case 3: return (char) 176;
+            case 0: return (char) '█';
+            case 1: return (char) '▓';
+            case 2: return (char) '▒';
+            case 3: return (char) '░';
             default: return ' ';
         }
     }
