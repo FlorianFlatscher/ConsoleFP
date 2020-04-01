@@ -61,7 +61,7 @@ public class Application extends javafx.application.Application {
             timer = new AnimationTimer() {
                 @Override
                 public void handle(long l) {
-                    game.setText(agent.getRender(Math.PI * 0.25, 50, 100));
+                    game.setText(agent.getRender(Math.PI * 0.25, 60, 200));
                     stage.sizeToScene();
                 }
             };

@@ -28,26 +28,18 @@ public class Agent {
             direction += 0.03;
         }
         if (d) {
-            direction -= 0.01;
-        }
-        if(w){
-            this.x += 0.01;
-        }
-        if(s){
-            this.x -= 0.01;
+            direction -= 0.03;
         }
         if (w) {
-            x+=Math.cos(direction) * -0.01;
-            y+=Math.sin(direction) * -0.01;
+            x+=Math.cos(direction) * -0.02;
+            y+=Math.sin(direction) * -0.02;
             
         }
         if (s) {
-            x+=Math.cos(direction) * 0.01;
-            y+=Math.sin(direction) * 0.01;
+            x+=Math.cos(direction) * 0.02;
+            y+=Math.sin(direction) * 0.02;
         }
 
-        System.out.println("x = " + x);
-        System.out.println("y = " + y);
 
         char[][] stripes = new char[asciiViewWidth][asciiViewHeight];
         for (int i = 0; i < stripes.length; i++) {
@@ -64,13 +56,13 @@ public class Agent {
             double distance = Math.sqrt(currentX * currentX + currentY * currentY);
             double maxDistance = Math.sqrt(map.length * map.length + map[0].length * map[0].length);
 
-            int roofStart = (int) ((asciiViewHeight/2.) * (distance/maxDistance));
+            int roofStart = (int) ((asciiViewHeight*0.55) * (distance/maxDistance) + asciiViewHeight*0.06);
             int floorStart = asciiViewHeight - roofStart;
 
             for (int y = 0; y <= roofStart; y++) {
                 stripes[i][y] = (' ');
             }
-            System.out.println("distance = " + distance);
+
             for (int y = roofStart+1; y < floorStart; y++) {
                 stripes[i][y] = (Map.mapBlock(distance, maxDistance));
             }
