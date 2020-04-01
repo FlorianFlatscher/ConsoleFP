@@ -25,38 +25,51 @@ public class Agent {
 
     public String getRender(double viewingAngle, int asciiViewHeight, int asciiViewWidth) {
         if (a) {
-            direction += 0.01;
+            direction += 0.03;
         }
         if (d) {
-            direction += 0.01;
+            direction -= 0.03;
         }
+        if (w) {
+            x+=Math.cos(direction) * -0.01;
+            y+=Math.sin(direction) * -0.01;
+            
+        }
+        if (s) {
+            x+=Math.cos(direction) * 0.01;
+            y+=Math.sin(direction) * 0.01;
+        }
+
+        System.out.println("x = " + x);
+        System.out.println("y = " + y);
+
         char[][] stripes = new char[asciiViewWidth][asciiViewHeight];
         for (int i = 0; i < stripes.length; i++) {
-            double currentAngle = direction - viewingAngle*(i/(double)asciiViewWidth) + viewingAngle/2;
+            double currentAngle = direction - viewingAngle/2.  + viewingAngle*(i/(double)asciiViewWidth) ;
 
-            double currentX = this.x;
-            double currentY = this.y;
+            double currentX = 0;
+            double currentY = 0;
 
-            while (map[(int) Math.round(currentX)][(int) Math.round(currentY)] != '#') {
+            while (map[(int) Math.round(currentX + this.x)][(int) Math.round(currentY + this.y) ] != '#') {
                 currentX += Math.cos(currentAngle) * accuracy;
                 currentY += Math.sin(currentAngle) * accuracy;
-
             }
 
             double distance = Math.sqrt(currentX * currentX + currentY * currentY);
             double maxDistance = Math.sqrt(map.length * map.length + map[0].length * map[0].length);
 
-            int roofStart = (int) (asciiViewHeight*0.35 * (distance/maxDistance) + asciiViewHeight*0.05);
+            int roofStart = (int) ((asciiViewHeight/2.) * (distance/maxDistance));
             int floorStart = asciiViewHeight - roofStart;
 
             for (int y = 0; y <= roofStart; y++) {
                 stripes[i][y] = (' ');
             }
+            System.out.println("distance = " + distance);
             for (int y = roofStart+1; y < floorStart; y++) {
                 stripes[i][y] = (Map.mapBlock(distance, maxDistance));
             }
             for (int y = floorStart; y < asciiViewHeight; y++) {
-                stripes[i][y] = (Map.mapFloor(y - floorStart, asciiViewHeight / 2.));
+                stripes[i][y] = (Map.mapFloor(y - asciiViewHeight / 2., asciiViewHeight / 2.));
             }
         }
         StringBuilder asciiImage = new StringBuilder(asciiViewHeight * asciiViewWidth + asciiViewHeight);
