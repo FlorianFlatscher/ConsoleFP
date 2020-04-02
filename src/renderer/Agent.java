@@ -64,10 +64,10 @@ public class Agent {
             }
 
             for (int y = roofStart+1; y < floorStart; y++) {
-                stripes[i][y] = (Map.mapBlock(distance, maxDistance));
+                stripes[i][y] = (Map.mapBlock(distance + 20, maxDistance + 20));
             }
             for (int y = floorStart; y < asciiViewHeight; y++) {
-                stripes[i][y] = (Map.mapFloor(y - asciiViewHeight / 2., asciiViewHeight / 2.));
+                stripes[i][y] = (Map.mapFloor(y - asciiViewHeight / 2. - 15, asciiViewHeight/2. - 15));
             }
         }
         StringBuilder asciiImage = new StringBuilder(asciiViewHeight * asciiViewWidth + asciiViewHeight);
